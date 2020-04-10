@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package post;
+
+option java_package = "io.zillaci.grpc";
+option java_outer_classname = "BlogProto";
+
+message PostRequest {
+    string title = 1;
+    string body = 2;
+    Author author = 3;
+}
+
+message Author {
+    string name = 1;
+    string email = 2;
+}
+
+message PostResponse {
+    int32 post_id = 1;
+}
+
+service Blog {
+    rpc AddPost (PostRequest) returns (PostResponse) {}
+}
